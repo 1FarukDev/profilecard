@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import UserCard from './UserCard';
 
@@ -24,8 +24,6 @@ const SearchForm: React.FC<SearchFormProps> = ({ username, setUsername, fetchUse
   </form>
 );
 
-
-
 interface UserData {
   avatar_url: string;
   name: string;
@@ -41,6 +39,16 @@ const UserInfo: React.FC = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
+
+  useEffect(() => {
+    localStorage.removeItem('searchHistory');
+
+    const storedHistory = localStorage.getItem('searchHistory');
+    if (storedHistory) {
+      setSearchHistory(JSON.parse(storedHistory));
+    }
+  }, []);
 
   const fetchUserData = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +61,11 @@ const UserInfo: React.FC = () => {
       }
       const data = await response.json();
       setUserData(data);
+
+      const updatedHistory = [...searchHistory, username];
+      setSearchHistory(updatedHistory);
+
+      localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -74,6 +87,16 @@ const UserInfo: React.FC = () => {
         {error && <p className="error" role="alert">{error}</p>}
 
         {userData && <UserCard userData={userData} />}
+        {searchHistory.length > 0 && (
+          <div className="search_history">
+            Previously Searched Usernames:
+            <ol>
+              {searchHistory.map((name, index) => (
+                <li key={index}>{name}</li>
+              ))}
+            </ol>
+          </div>
+        )}
       </main>
     </div>
   );

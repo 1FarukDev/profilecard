@@ -10,7 +10,6 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,6 +75,13 @@ button:focus {
   border-top-color: #000;
   animation: spin 1s ease-in-out infinite;
   margin: 0 auto;
+}
+
+.search_history {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 10px;
 }
 
 @keyframes spin {
