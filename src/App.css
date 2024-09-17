@@ -1,0 +1,188 @@
+#root {
+  max-width: 790px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.search-form {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #999;
+  border-radius: 50px 0px 0px 50px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #000;
+}
+
+button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 0px 50px 50px 0px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #212121;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  margin: 1rem 0;
+}
+
+.user-card {
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+h2 {
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.username {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-size: 0.7rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  color: #1f2937;
+}
+
+.info-item svg {
+  margin-right: 0.5rem;
+  color: #000;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: #000;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-link svg {
+  margin-left: 0.5rem;
+}
+
+.profile-link:hover,
+.profile-link:focus {
+  background-color: #212121;
+}
+
+footer {
+  margin-top: 2rem;
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .user-card {
+    padding: 0rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  input,
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
